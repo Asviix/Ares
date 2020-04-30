@@ -1,0 +1,9 @@
+level 0 : All Users
+Level 1 : Moderators ()
+Level 2 : Administrators
+Level 3 : Server Owner
+
+// Bot Staff
+Level 8 : Bot Support
+level 9 : Bot Admins
+level 10 : Bot Owner
