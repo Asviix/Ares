@@ -27,7 +27,7 @@ module.exports = (client) => {
   
   client.loadCommand = (commandName, module) => {
     try {
-      client.logger.log(`Loading Command: ${commandName}`);
+      //client.logger.log(`Loading Command: ${commandName}`);
       const props = require(`../commands/${module}/${commandName}`);
       if (props.init) {
         props.init(client);
@@ -71,7 +71,7 @@ module.exports = (client) => {
   };
 
   client.addServer_Default = async (id) => {
-    client.db.query(`INSERT INTO \`servers\` (\`id\`, \`prefix\`, \`language\`, \`welcome_message\`, \`memberCount_id\`, \`logs_id\`, \`logs_int\`) VALUES ('${id}', 'A-', 'en', '0', '0', '0', '000000000000000000000000000000000000000000000000')`, (err) => {
+    client.db.query(`INSERT INTO \`servers\` (\`id\`, \`prefix\`, \`language\`, \`welcome_message\`, \`welcome_id\`, \`memberCount_id\`, \`logs_id\`, \`logs_int\`) VALUES ('${id}', 'A-', 'en', '0', '0', '0', '0', '000000000000000000000000000000000000000000000000')`, (err) => {
       if (err) client.logger.error(`There was an error ! ${err}, ${err.stack}`);
     });
   };

@@ -8,7 +8,7 @@ module.exports = (client, channel) => {
     logs_id = result[0].logs_id;
     logs_int = result[0].logs_int.toString().split("");
 
-    if ((logs_int[0] == 1 && channel.type == "text") || (logs_int[6] == 1 && channel.type == "voice") || (logs_int[11] == 1 & channel.type == "category")) {
+    if ((logs_int[lang.LOGS_TEXTCHANNEL_MODIFIER] == 1 && channel.type == "text") || (logs_int[lang.LOGS_VOICECHANNEL_MODIFIER] == 1 && channel.type == "voice") || (logs_int[lang.LOGS_CATEGORY_MODIFIER] == 1 & channel.type == "category")) {
       const timestamp = `${moment(channel.createdAt).format("YYYY-MM-DD HH:mm:ss:ms")}`
       let embed = new MessageEmbed()
         .setTitle(eval(`lang.${channel.type.toUpperCase()}_CREATE`))

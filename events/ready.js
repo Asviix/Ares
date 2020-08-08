@@ -1,9 +1,9 @@
 module.exports = async client => {
-  client.logs_cmd = client.channels.cache.find(channel => channel.id == client.config.logs_c);
-  client.logs_serv = client.channels.cache.find(channel => channel.id == client.config.logs_s);
+  client.LOGS_cmd = client.channels.cache.find(channel => channel.id == client.config.LOGS_c);
+  client.LOGS_serv = client.channels.cache.find(channel => channel.id == client.config.LOGS_s);
   client.status_channel = client.channels.cache.find(channel => channel.id == client.config.status_channel);
 
-  client.db.query(`SELECT * FROM \`servers\` WHERE \`logs_id\` != 0`, (err, result) => {
+  client.db.query(`SELECT * FROM \`servers\` WHERE \`logs_int\` != 0`, (err, result) => {
     if(err) client.logger.error(`There was an error ! ${err}`);
     if (result.length == 0) return;
 
@@ -11,10 +11,10 @@ module.exports = async client => {
     for (i = 0; i < result.length; i++) {
       
       let guild = client.guilds.cache.find(guild => guild.id == result[i].id);
-      let channel = guild.channels.cache.find(channel => channel.id == result[i].logs_id);
+      let channel = guild.channels.cache.find(channel => channel.id == result[i].logs_int);
       if (channel == undefined) return;
 
-      channel.send(`\`\`\`asciidoc\n= Bot Ready ! =\n\`\`\``);
+      //channel.send(`\`\`\`asciidoc\n= Bot Ready ! =\n\`\`\``);
     };
   });
 

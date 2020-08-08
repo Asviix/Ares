@@ -1,7 +1,7 @@
 exports.run = async (client, lang, message, args) => {
   await message.channel.messages.fetch();
-  if (args.length == 0) return message.channel.send(lang.purge_ERROR_ARGS);
-  if (parseInt(args[0] == NaN)) return message.channel.send(lang.purge_ERROR_ARGS_NUMBER);
+  if (args.length == 0) return message.channel.send(lang.PURGE_ERROR_ARGS);
+  if (parseInt(args[0] == NaN)) return message.channel.send(lang.PURGE_ERROR_ARGS_NUMBER);
 
   let authorsID = args.slice(1);
   let messages;
@@ -15,7 +15,8 @@ exports.run = async (client, lang, message, args) => {
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  reason: "",
+  guildOnly: true,
   aliases: ["p"],
   permLevel: 1,
 };

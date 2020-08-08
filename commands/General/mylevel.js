@@ -7,12 +7,13 @@ exports.run = async (client, lang, message, args) => {
       level = result[0].level;
     };
 
-    message.reply(`${lang.level_1} ${level}`)
+    message.reply(`${lang.LEVEL_1} ${level}`)
   });
 };
 
 exports.conf = {
   enabled: true,
+  reason: "",
   guildOnly: true,
   aliases: [],
   permLevel: 0

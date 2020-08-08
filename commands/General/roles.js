@@ -1,5 +1,5 @@
 exports.run = async (client, lang, message, args) => {
-  let content = [lang.roles_1]
+  let content = [lang.ROLES_1]
 
   await message.guild.roles.cache.every(role => content.push(`- ${role.name}: ${role.members.size}`))
   await content.push("\n```")
@@ -9,7 +9,8 @@ exports.run = async (client, lang, message, args) => {
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  reason: "",
+  guildOnly: true,
   aliases: [],
   permLevel: 0,
 };

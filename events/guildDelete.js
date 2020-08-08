@@ -1,5 +1,6 @@
 module.exports = (client, guild) => {
-  let embed = new Discord.MessageEmbed()
+  const { MessageEmbed } = require("discord.js");
+  let embed = new MessageEmbed()
     .setColor()
     .setTitle(`Guild Left`)
     .setThumbnail(`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`)
@@ -7,9 +8,9 @@ module.exports = (client, guild) => {
       { name: 'Guild Name :', value: `${guild.name}`},
       { name: 'Guild ID :', value: `${guild.id}`},
       { name: 'Member Count :', value : `${guild.memberCount}`},
-      { name: 'Owner Details', value: `Name : ${guild.owner.nickname} | ID : ${guild.ownerID}`}
+      { name: 'Owner Details', value: `Name : ${guild.owner.user.username} | ID : ${guild.ownerID}`}
     )
     .setTimestamp()
 
-  client.logs_serv.send(embed);
+  client.LOGS_serv.send(embed);
 };

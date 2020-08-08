@@ -2,7 +2,7 @@ exports.run = async (client, lang, message, args) => {
   const { MessageEmbed } = require("discord.js");
   moment = require("moment");
   if (!args) return message.channel.send(lang.role_ERROR_ARGS);
-  if (!message.guild.roles.cache.find(role => role.name.toLowerCase() == args[0].toLowerCase())) return message.channel.send(lang.roleinfo_ERROR_NAME);
+  if (!message.guild.roles.cache.find(role => role.name.toLowerCase() == args[0].toLowerCase())) return message.channel.send(lang.ROLEINFO_ERROR_NAME);
 
   let role = message.guild.roles.cache.find(role => role.name.toLowerCase() == args[0].toLowerCase());
   const date = `${moment(role.createdAt.getTime()).format("YYYY-MM-DD HH:mm:ss")}`;
@@ -24,7 +24,8 @@ exports.run = async (client, lang, message, args) => {
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  reason: "",
+  guildOnly: true,
   aliases: ["rinfo"],
   permLevel: 0,
 };

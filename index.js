@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const mysql = require("mysql");
+const cliProgress = require("cli-progress");
+const HLTV = require("hltv");
 
 const client = new Discord.Client();
 
@@ -25,8 +27,9 @@ client.db.connect(function(err) {
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
+client.cooldowns = new Discord.Collection();
 
-const modules = ['General', 'System', 'Administration', 'Config'];
+const modules = ['General', 'System', 'Administration', 'Config', 'HLTV'];
 
 const init = async () => {
 
@@ -49,7 +52,7 @@ const evtFiles = await readdir("./events/");
 evtFiles.forEach(file => {
   i++
   const eventName = file.split(".")[0];
-  client.logger.log(`Loading Event: ${eventName}`);
+  //client.logger.log(`Loading Event: ${eventName}`);
   const event = require(`./events/${file}`);
   client.on(eventName, event.bind(null, client));
 });

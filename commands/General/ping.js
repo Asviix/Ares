@@ -1,11 +1,11 @@
 exports.run = async (client, lang, message, args) => {
-  let end = new Date - client.start;
   const msg = await message.channel.send("Ping?");
-  msg.edit(`${lang.ping} ${msg.createdTimestamp - message.createdTimestamp}ms.\n ${lang.ping2} ${end}ms ${lang.ping3}`);
+  msg.edit(`${lang.PING} ${msg.createdTimestamp - message.createdTimestamp}ms.\n ${lang.PING2} ${new Date - client.start}ms ${lang.PING3}`);
 };
 
 exports.conf = {
   enabled: true,
+  reason: "",
   guildOnly: false,
   aliases: [],
   permLevel: 0,

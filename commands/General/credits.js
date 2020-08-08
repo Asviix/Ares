@@ -1,10 +1,23 @@
-exports.run = async (client, lang, message, args) => {
+const { MessageEmbed } = require("discord.js");
 
-  message.channel.send(`${lang.credits_TITLE}\n\n${lang.credits_FIELD_1_TITLE}\n${lang.credits_FIELD_1}\n\n${lang.credits_FIELD_2_TITLE}\n${lang.credits_FIELD_2}\n\n${lang.credits_FOOTER} https://discord.gg/2N88pTE https://discordapp.com/oauth2/authorize?client_id=694898754121367562&scope=bot&permissions=8`);
+exports.run = async (client, lang, message, args) => {
+  const { MessageEmbed } = require("discord.js");
+
+  let embed = new MessageEmbed()
+    .setTitle(`${lang.CREDITS_TITLE}`)
+    .setAuthor(message.author.username)
+    .setColor(`#3B95EA`)
+    .addField(`${lang.CREDITS_FIELD1}`, `Asviix#14934`)
+    .addField(`${lang.CREDITS_FIELD2}`, `Néède#3268, Natsukira#0561`)
+    .addField(lang.CREDITS_FIELD3, lang.CREDITS_FIELD4)
+    .setFooter(`discord.gg/2N88pTE`)
+
+  message.channel.send(embed)
 };
 
 exports.conf = {
   enabled: true,
+  reason: "",
   guildOnly: false,
   aliases: [],
   permLevel: 0,

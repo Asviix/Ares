@@ -7,11 +7,12 @@ exports.run = async (client, lang, message, args) => {
   response = client.loadCommand(command.help.name, command.help.module);
   if (response) return message.reply(`${lang.RELOAD_ERROR_LOAD} ${response}`);
 
-  message.reply(`${lang.reload_1} \`${command.help.name}\` ${lang.reload_2}`);
+  message.reply(`${lang.RELOAD_1} \`${command.help.name}\` ${lang.RELOAD_2}`);
 };
 
 exports.conf = {
   enabled: true,
+  reason: "",
   guildOnly: false,
   aliases: [],
   permLevel: 9,
